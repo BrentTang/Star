@@ -1,0 +1,56 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.tzh.com/star"
+        xmlns:tns="http://www.tzh.com/star"
+        elementFormDefault="qualified">
+
+    <element name="configuration" >
+        <complexType>
+            <all>
+                <element name="property-load">
+                    <complexType>
+                        <attribute name="classpath" type="string" use="required" />
+                    </complexType>
+                </element>
+                <element name="component-scan">
+                    <complexType>
+                        <attribute name="basePackage" type="string" use="required" />
+                    </complexType>
+                </element>
+                <element name="beans">
+                    <complexType>
+                        <choice>
+                            <element name="bean" maxOccurs="unbounded">
+                                <complexType>
+                                    <attribute name="id" type="string" use="required"></attribute>
+                                    <attribute name="class" type="string" use="required"></attribute>
+                                    <attribute name="scope">
+                                        <simpleType>
+                                            <restriction base="string">
+                                                <enumeration value="prototype"/>
+                                                <enumeration value="singleton"/>
+                                            </restriction>
+                                        </simpleType>
+                                    </attribute>
+                                    <choice>
+                                        <element name="property" maxOccurs="unbounded">
+                                            <complexType>
+                                                <attribute name="name" type="string" use="required" />
+                                                <attribute name="value" type="string" />
+                                                <attribute name="ref" type="string" />
+                                            </complexType>
+                                        </element>
+                                    </choice>
+                                </complexType>
+                            </element>
+                        </choice>
+                    </complexType>
+                </element>
+            </all>
+        </complexType>
+
+    </element>
+
+
+</schema>

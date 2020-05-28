@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.tzh.com/star"
+        xsi:schemaLocation="http://www.tzh.com/star star.xsd">
+
+    <property-load classpath="*.properties" />
+    <component-scan basePackage="com.tzh" />
+
+    <beans>
+        <bean id="userService" class="com.tzh.service.impl.UserServiceImpl" scope="singleton" >
+            <property name="userDao" ref="uDao" />
+            <property name="username" value="${database.username}" />
+        </bean>
+    </beans>
+
+</configuration>
